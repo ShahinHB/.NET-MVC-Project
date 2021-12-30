@@ -18,16 +18,11 @@ namespace Backend_Project.Data
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Director> Directors { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<Menu> Menus { get; set; }
-        public DbSet<Phone> Phones { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
-        public DbSet<RestaurantDetail> RestaurantDetails { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Social> Socials { get; set; }
-
-
     }
 }

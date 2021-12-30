@@ -26,8 +26,15 @@ using Backend_Project.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Shahin\Desktop\practices\Backend_Project\Backend_Project\Views\_ViewImports.cshtml"
+using Backend_Project.Data;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5453e598d0f2407dc973027e7e00aefd5824b905", @"/Views/Listing/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2d7f0b1d7edd1999aa31e1c09e137d8e574d7b91", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3221dc341386c40c03f07e7576b454d540693dac", @"/Views/_ViewImports.cshtml")]
     public class Views_Listing_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "1", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -110,7 +117,7 @@ using Backend_Project.Models;
                         <div class=""col-lg-3 col-sm-6"">
                             <select class=""custom-select my-1 mr-sm-2 new-select"" id=""inlineFormCustomSelectPref"">
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5453e598d0f2407dc973027e7e00aefd5824b9056177", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5453e598d0f2407dc973027e7e00aefd5824b9056378", async() => {
                 WriteLiteral("Choose...");
             }
             );
@@ -127,7 +134,7 @@ using Backend_Project.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5453e598d0f2407dc973027e7e00aefd5824b9057481", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5453e598d0f2407dc973027e7e00aefd5824b9057682", async() => {
                 WriteLiteral("Hotel");
             }
             );
@@ -143,7 +150,7 @@ using Backend_Project.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5453e598d0f2407dc973027e7e00aefd5824b9058671", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5453e598d0f2407dc973027e7e00aefd5824b9058872", async() => {
                 WriteLiteral("Bar");
             }
             );
@@ -159,7 +166,7 @@ using Backend_Project.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5453e598d0f2407dc973027e7e00aefd5824b9059859", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5453e598d0f2407dc973027e7e00aefd5824b90510060", async() => {
                 WriteLiteral("Food Courts");
             }
             );

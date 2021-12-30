@@ -26,8 +26,15 @@ using Backend_Project.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Shahin\Desktop\practices\Backend_Project\Backend_Project\Views\_ViewImports.cshtml"
+using Backend_Project.Data;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"eb7059161666b63fea6a9ec6de209fe302ee56cc", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2d7f0b1d7edd1999aa31e1c09e137d8e574d7b91", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3221dc341386c40c03f07e7576b454d540693dac", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #line hidden
@@ -98,7 +105,7 @@ using Backend_Project.Models;
                     <div class=""main-search-input-item"">
                         <select data-placeholder=""All Categories"" class=""chosen-select custom-select"">
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc5282", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc5483", async() => {
                 WriteLiteral("All Categories");
             }
             );
@@ -112,7 +119,7 @@ using Backend_Project.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc6276", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc6477", async() => {
                 WriteLiteral("Shops");
             }
             );
@@ -126,7 +133,7 @@ using Backend_Project.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc7261", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc7462", async() => {
                 WriteLiteral("Hotels");
             }
             );
@@ -140,7 +147,7 @@ using Backend_Project.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc8247", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc8448", async() => {
                 WriteLiteral("Restaurants");
             }
             );
@@ -154,7 +161,7 @@ using Backend_Project.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc9238", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc9439", async() => {
                 WriteLiteral("Fitness");
             }
             );
@@ -168,7 +175,7 @@ using Backend_Project.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc10225", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb7059161666b63fea6a9ec6de209fe302ee56cc10426", async() => {
                 WriteLiteral("Events");
             }
             );

@@ -128,32 +128,6 @@ namespace Backend_Project.Migrations
                     b.ToTable("Contacts");
                 });
 
-            modelBuilder.Entity("Backend_Project.Models.Director", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("Website")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Directors");
-                });
-
             modelBuilder.Entity("Backend_Project.Models.Feature", b =>
                 {
                     b.Property<int>("Id")
@@ -202,36 +176,15 @@ namespace Backend_Project.Migrations
                     b.ToTable("Menus");
                 });
 
-            modelBuilder.Entity("Backend_Project.Models.Phone", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RestaurantId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RestaurantId");
-
-                    b.ToTable("Phones");
-                });
-
             modelBuilder.Entity("Backend_Project.Models.Restaurant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -240,16 +193,39 @@ namespace Backend_Project.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<string>("DirectorMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DirectorName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DirectorPhone")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("DirectorWebsite")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
+                    b.Property<string>("Phone1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone3")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProfilPictureName")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
-
-                    b.Property<int>("RestaurantId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .HasMaxLength(30)
@@ -261,38 +237,7 @@ namespace Backend_Project.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RestaurantId");
-
                     b.ToTable("Restaurants");
-                });
-
-            modelBuilder.Entity("Backend_Project.Models.RestaurantDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("About")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DirectorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RestaurantId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DirectorId")
-                        .IsUnique();
-
-                    b.HasIndex("RestaurantId");
-
-                    b.ToTable("RestaurantDetails");
                 });
 
             modelBuilder.Entity("Backend_Project.Models.Review", b =>
@@ -596,76 +541,35 @@ namespace Backend_Project.Migrations
 
             modelBuilder.Entity("Backend_Project.Models.Feature", b =>
                 {
-                    b.HasOne("Backend_Project.Models.RestaurantDetail", "RestaurantDetail")
+                    b.HasOne("Backend_Project.Models.Restaurant", "Restaurant")
                         .WithMany("Features")
                         .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("RestaurantDetail");
+                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("Backend_Project.Models.Menu", b =>
                 {
-                    b.HasOne("Backend_Project.Models.RestaurantDetail", "RestaurantDetail")
+                    b.HasOne("Backend_Project.Models.Restaurant", "Restaurant")
                         .WithMany("Menus")
                         .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("RestaurantDetail");
-                });
-
-            modelBuilder.Entity("Backend_Project.Models.Phone", b =>
-                {
-                    b.HasOne("Backend_Project.Models.RestaurantDetail", "RestaurantDetail")
-                        .WithMany("Phones")
-                        .HasForeignKey("RestaurantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("RestaurantDetail");
-                });
-
-            modelBuilder.Entity("Backend_Project.Models.Restaurant", b =>
-                {
-                    b.HasOne("Backend_Project.Models.RestaurantDetail", "RestaurantDetail")
-                        .WithMany()
-                        .HasForeignKey("RestaurantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("RestaurantDetail");
-                });
-
-            modelBuilder.Entity("Backend_Project.Models.RestaurantDetail", b =>
-                {
-                    b.HasOne("Backend_Project.Models.Director", "Director")
-                        .WithOne("RestaurantDetail")
-                        .HasForeignKey("Backend_Project.Models.RestaurantDetail", "DirectorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Backend_Project.Models.RestaurantDetail", "Restaurant")
-                        .WithMany()
-                        .HasForeignKey("RestaurantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Director");
 
                     b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("Backend_Project.Models.Review", b =>
                 {
-                    b.HasOne("Backend_Project.Models.RestaurantDetail", "RestaurantDetail")
+                    b.HasOne("Backend_Project.Models.Restaurant", "Restaurant")
                         .WithMany("Reviews")
                         .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("RestaurantDetail");
+                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -724,18 +628,11 @@ namespace Backend_Project.Migrations
                     b.Navigation("Comments");
                 });
 
-            modelBuilder.Entity("Backend_Project.Models.Director", b =>
-                {
-                    b.Navigation("RestaurantDetail");
-                });
-
-            modelBuilder.Entity("Backend_Project.Models.RestaurantDetail", b =>
+            modelBuilder.Entity("Backend_Project.Models.Restaurant", b =>
                 {
                     b.Navigation("Features");
 
                     b.Navigation("Menus");
-
-                    b.Navigation("Phones");
 
                     b.Navigation("Reviews");
                 });

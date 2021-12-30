@@ -32,10 +32,26 @@ namespace Backend_Project.Models
 
         [MaxLength(30)]
         public string Status { get; set; }
+        public string Location { get; set; }
+        public string About { get; set; }
+        public string Phone1 { get; set; }
+        public string Phone2 { get; set; }
+        public string Phone3 { get; set; }
 
-        [ForeignKey("RestaurantDetail")]
-        public int RestaurantId { get; set; }
-        public RestaurantDetail RestaurantDetail { get; set; }
+        [MaxLength(50)]
+        public string DirectorName { get; set; }
 
+        [MaxLength(20)]
+        public string DirectorPhone { get; set; }
+
+        public string DirectorMail { get; set; }
+
+        public string DirectorWebsite { get; set; }
+        
+        public List<Menu> Menus { get; set; }
+        public List<Review> Reviews { get; set; }
+        public List<Feature> Features { get; set; }
+
+        
     }
 }

@@ -20,9 +20,9 @@ namespace Backend_Project.Models
         public string Ingredients { get; set; }
 
 
-        [ForeignKey("RestaurantDetail")]
+        [ForeignKey("Restaurant")]
         public int RestaurantId { get; set; }
-        public RestaurantDetail RestaurantDetail { get; set; }
+        public Restaurant Restaurant { get; set; }
 
     }
 }

@@ -18,8 +18,8 @@ namespace Backend_Project.Models
         public DateTime CreatedDate { get; set; }
         public string Content { get; set; }
 
-        [ForeignKey("RestaurantDetail")]
+        [ForeignKey("Restaurant")]
         public int RestaurantId { get; set; }
-        public RestaurantDetail RestaurantDetail { get; set; }
+        public Restaurant Restaurant { get; set; }
     }
 }
