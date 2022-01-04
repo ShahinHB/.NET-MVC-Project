@@ -12,7 +12,7 @@ namespace Backend_Project.Models
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(30)]
+        [MaxLength(100)]
         public string Name { get; set; }
 
         public List<RestaurantToFeature> RestaurantToFeatures { get; set; }

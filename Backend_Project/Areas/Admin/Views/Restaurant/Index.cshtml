@@ -21,7 +21,7 @@
                         <th scope="col">Type</th>
                         <th scope="col">Status</th>
                         <th scope="col">Director</th>
-                        <th scope="col">Features</th>
+                        <th scope="col">Capacity</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -40,10 +40,7 @@
                                 <td>@item.Status</td>
                                 <td>@item.DirectorName </td>
                                 <td>
-                                    @foreach (var features in item.RestaurantToFeatures)
-                                    {
-                                        <span>@features.Feature.Name </span>
-                                    }
+                                   @item.Capacity
                                 </td>
                                 <td>
                                     <a class="btn btn-success" asp-area="Admin" asp-controller="Restaurant" asp-action="Update" asp-route-id="@item.Id">Update</a>

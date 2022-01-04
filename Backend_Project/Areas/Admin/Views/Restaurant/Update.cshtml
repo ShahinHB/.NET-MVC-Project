@@ -16,8 +16,8 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="@Model.Address" class="form-label">Address</label>
-                    <input class="form-control" asp-for="@Model.Name">
-                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                    <input class="form-control" asp-for="@Model.Address">
+                    <span asp-validation-for="@Model.Address" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="@Model.ProfilPicture" class="form-label">Profil Picture </label>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="@Model.About" class="form-label">Status</label>
-                    <input id="editor" class="form-control" asp-for="@Model.About">
+                    <textarea class="form-control" asp-for="@Model.About"> </textarea>
                     <span asp-validation-for="@Model.About" class="text-danger"></span>
                 </div>
                 <div class="mb-3 col-3" style="display: inline-block">
@@ -97,6 +97,11 @@
                     </select>
 
                     <span asp-validation-for="@Model.RestaurantToFeaturesId" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-3" style="display: inline-block">
+                    <label asp-for="@Model.Capacity" class="form-label">Capacity</label>
+                    <input class="form-control" asp-for="@Model.Capacity">
+                    <span asp-validation-for="@Model.Capacity" class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
                 <a asp-area="Admin" asp-controller="Restaurant" asp-action="Index">Back to list</a>

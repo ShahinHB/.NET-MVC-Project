@@ -156,8 +156,8 @@ namespace Backend_Project.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -203,6 +203,9 @@ namespace Backend_Project.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
 
                     b.Property<string>("CoverImageName")
                         .HasMaxLength(250)
@@ -557,7 +560,7 @@ namespace Backend_Project.Migrations
             modelBuilder.Entity("Backend_Project.Models.Booking", b =>
                 {
                     b.HasOne("Backend_Project.Models.Restaurant", "Restaurant")
-                        .WithMany()
+                        .WithMany("Bookings")
                         .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -680,6 +683,8 @@ namespace Backend_Project.Migrations
 
             modelBuilder.Entity("Backend_Project.Models.Restaurant", b =>
                 {
+                    b.Navigation("Bookings");
+
                     b.Navigation("Menus");
 
                     b.Navigation("RestaurantToFeatures");

@@ -42,7 +42,7 @@ namespace Backend_Project.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if ((model.ProfilPicture.ContentType == "image/jpeg" && model.CoverImage.ContentType == "image/jpeg") || (model.ProfilPicture.ContentType == "image/png" && model.CoverImage.ContentType == "image/png"))
+                if ((model.ProfilPicture.ContentType == "image/jpeg" || model.ProfilPicture.ContentType == "image/png" || model.ProfilPicture.ContentType == "image/jpg") && (model.CoverImage.ContentType == "image/jpeg" || model.CoverImage.ContentType == "image/png" || model.CoverImage.ContentType == "image/jpg"))
                 {
                     string profilPictureFileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.ProfilPicture.FileName;
                     string profilPictureFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", profilPictureFileName);
@@ -99,7 +99,7 @@ namespace Backend_Project.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.ProfilPicture.ContentType == "image/jpeg" && model.CoverImage.ContentType == "image/jpeg" || model.ProfilPicture.ContentType == "image/png" && model.CoverImage.ContentType == "image/png")
+                if ((model.ProfilPicture.ContentType == "image/jpeg" || model.ProfilPicture.ContentType == "image/png" || model.ProfilPicture.ContentType == "image/jpg") && (model.CoverImage.ContentType == "image/jpeg" || model.CoverImage.ContentType == "image/png" || model.CoverImage.ContentType == "image/jpg"))
                 {
                     string profilPictureFileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.ProfilPicture.FileName;
                     string profilPictureFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", profilPictureFileName);

@@ -47,9 +47,10 @@ namespace Backend_Project.Models
         public string DirectorMail { get; set; }
 
         public string DirectorWebsite { get; set; }
-        
+        public int Capacity { get; set; }
         public List<Menu> Menus { get; set; }
         public List<Review> Reviews { get; set; }
+        public List<Booking> Bookings { get; set; }
         public List<RestaurantToFeature> RestaurantToFeatures { get; set; }
 
         [NotMapped]

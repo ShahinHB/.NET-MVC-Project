@@ -31,7 +31,7 @@
 
                                 <td><img src="~/Uploads/@item.ImageName" alt="Alternate Text" style="width:150px; max-height:150px;" /></td>
                                 <td>@item.Title</td>
-                                <td>@item.Content</td>
+                                <td>@item.Content.Substring(0,300)...</td>
                                 <td>@item.CreatedDate </td>
                                 <td>
                                     <a class="btn btn-success" asp-area="Admin" asp-controller="Blog" asp-action="Update" asp-route-id="@item.Id">Update</a>
