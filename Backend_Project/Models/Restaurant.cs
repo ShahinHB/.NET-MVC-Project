@@ -50,8 +50,9 @@ namespace Backend_Project.Models
         
         public List<Menu> Menus { get; set; }
         public List<Review> Reviews { get; set; }
-        public List<Feature> Features { get; set; }
+        public List<RestaurantToFeature> RestaurantToFeatures { get; set; }
 
-        
+        [NotMapped]
+        public List<int> RestaurantToFeaturesId { get; set; }
     }
 }

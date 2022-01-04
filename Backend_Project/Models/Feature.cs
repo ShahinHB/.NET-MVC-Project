@@ -15,8 +15,6 @@ namespace Backend_Project.Models
         [MaxLength(30)]
         public string Name { get; set; }
 
-        [ForeignKey("Restaurant")]
-        public int RestaurantId { get; set; }
-        public Restaurant Restaurant { get; set; }
+        public List<RestaurantToFeature> RestaurantToFeatures { get; set; }
     }
 }

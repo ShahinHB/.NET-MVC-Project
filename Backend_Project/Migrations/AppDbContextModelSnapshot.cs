@@ -128,6 +128,26 @@ namespace Backend_Project.Migrations
                     b.ToTable("Contacts");
                 });
 
+            modelBuilder.Entity("Backend_Project.Models.CustomUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("MyUsername")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Password")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CustomUsers");
+                });
+
             modelBuilder.Entity("Backend_Project.Models.Feature", b =>
                 {
                     b.Property<int>("Id")
@@ -139,12 +159,7 @@ namespace Backend_Project.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("RestaurantId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RestaurantId");
 
                     b.ToTable("Features");
                 });
@@ -238,6 +253,28 @@ namespace Backend_Project.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Restaurants");
+                });
+
+            modelBuilder.Entity("Backend_Project.Models.RestaurantToFeature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FeatureId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RestaurantId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FeatureId");
+
+                    b.HasIndex("RestaurantId");
+
+                    b.ToTable("RestaurantToFeatures");
                 });
 
             modelBuilder.Entity("Backend_Project.Models.Review", b =>
@@ -539,17 +576,6 @@ namespace Backend_Project.Migrations
                     b.Navigation("Blog");
                 });
 
-            modelBuilder.Entity("Backend_Project.Models.Feature", b =>
-                {
-                    b.HasOne("Backend_Project.Models.Restaurant", "Restaurant")
-                        .WithMany("Features")
-                        .HasForeignKey("RestaurantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Restaurant");
-                });
-
             modelBuilder.Entity("Backend_Project.Models.Menu", b =>
                 {
                     b.HasOne("Backend_Project.Models.Restaurant", "Restaurant")
@@ -557,6 +583,25 @@ namespace Backend_Project.Migrations
                         .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Restaurant");
+                });
+
+            modelBuilder.Entity("Backend_Project.Models.RestaurantToFeature", b =>
+                {
+                    b.HasOne("Backend_Project.Models.Feature", "Feature")
+                        .WithMany("RestaurantToFeatures")
+                        .HasForeignKey("FeatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Backend_Project.Models.Restaurant", "Restaurant")
+                        .WithMany("RestaurantToFeatures")
+                        .HasForeignKey("RestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feature");
 
                     b.Navigation("Restaurant");
                 });
@@ -628,11 +673,16 @@ namespace Backend_Project.Migrations
                     b.Navigation("Comments");
                 });
 
+            modelBuilder.Entity("Backend_Project.Models.Feature", b =>
+                {
+                    b.Navigation("RestaurantToFeatures");
+                });
+
             modelBuilder.Entity("Backend_Project.Models.Restaurant", b =>
                 {
-                    b.Navigation("Features");
-
                     b.Navigation("Menus");
+
+                    b.Navigation("RestaurantToFeatures");
 
                     b.Navigation("Reviews");
                 });

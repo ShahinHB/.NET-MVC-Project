@@ -2,6 +2,7 @@
 using Backend_Project.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,12 @@ namespace Backend_Project.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Menu> model = _context.Menus.ToList();
-            return View(model);
+            return View(_context.Menus.Include(r => r.Restaurant).ToList());
         }
 
         public IActionResult Create()
         {
+            ViewBag.Restaurant = _context.Restaurants.ToList();
             return View();
         }
 
@@ -39,12 +40,12 @@ namespace Backend_Project.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "menim errorum");
             return View(model);
         }
 
         public IActionResult Update(int id)
         {
+            ViewBag.Restaurant = _context.Restaurants.ToList();
             return View(_context.Menus.Find(id));
         }
 
@@ -58,7 +59,6 @@ namespace Backend_Project.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "menim errorum");
             return View(model);
         }
 

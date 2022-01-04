@@ -27,14 +27,14 @@ using Backend_Project.Models;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Shahin\Desktop\practices\Backend_Project\Backend_Project\Areas\Admin\Views\_ViewImports.cshtml"
+#line 4 "C:\Users\Shahin\Desktop\practices\Backend_Project\Backend_Project\Areas\Admin\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Http;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Areas/Admin/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f7f16cddaef8db5e987e6190ef99e0af1bbe4bd6", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"595f13cc453dfa7dbc747e9b1c4acf55c88de50b", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

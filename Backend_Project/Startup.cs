@@ -1,7 +1,10 @@
 using Backend_Project.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +31,11 @@ namespace Backend_Project
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(
             options => options.UseSqlServer(Configuration.GetConnectionString("BackendProject")));
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.Configure<CookieAuthenticationOptions>(options =>
+            {
+                options.AccessDeniedPath = new PathString("/Admin/Account/Login");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +56,7 @@ namespace Backend_Project
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -56,7 +65,7 @@ namespace Backend_Project
                 endpoints.MapAreaControllerRoute(
                    name: "Areas",
                    areaName: "Admin",
-                   pattern: "admin/{controller=Home}/{action=Index}/{id?}");
+                   pattern: "admin/{controller=Account}/{action=Login}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

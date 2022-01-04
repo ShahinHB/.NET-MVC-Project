@@ -18,7 +18,8 @@
 
     <!-- Custom styles for this template-->
     <link href="~/Areas/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
 </head>
 
 <body id="page-top">
@@ -67,8 +68,12 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item active" asp-area="Admin" asp-controller="Restaurant" asp-action="Index">Restaurants</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Restaurant" asp-action="Index">Restaurants</a>
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Feature" asp-action="Index">Features</a>
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Menu" asp-action="Index">Menus</a>
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Blog" asp-action="Index">Blogs</a>
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Setting" asp-action="Index">Special Datas</a>
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Social" asp-action="Index">Social Media</a>
                     </div>
                 </div>
             </li>
@@ -431,7 +436,13 @@
     <script src="~/Areas/js/demo/chart-area-demo.js"></script>
     <script src="~/Areas/js/demo/chart-pie-demo.js"></script>
     <script src="~/js/script.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function () {
+            $('.selectTwo').select2();
+        });
+    </script>
 </body>
 
 </html>

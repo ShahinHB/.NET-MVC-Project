@@ -24,5 +24,8 @@ namespace Backend_Project.Data
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Social> Socials { get; set; }
+        public DbSet<RestaurantToFeature>  RestaurantToFeatures { get; set; }
+        public DbSet<CustomUser> CustomUsers { get; set; }
+
     }
 }

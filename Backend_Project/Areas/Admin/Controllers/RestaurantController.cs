@@ -25,13 +25,15 @@ namespace Backend_Project.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View(_context.Restaurants.Include(f=>f.Features)
-                .Include(r=>r.Reviews)
-                .Include(m=>m.Menus).ToList());
+            return View(_context.Restaurants.Include(f => f.RestaurantToFeatures).ThenInclude(r => r.Feature)
+                .Include(r => r.Reviews)
+                .Include(m => m.Menus)
+                .ToList());
         }
-        
+
         public IActionResult Create()
         {
+            ViewBag.Features = _context.Features.ToList();
             return View();
         }
 
@@ -40,7 +42,7 @@ namespace Backend_Project.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if ((model.ProfilPicture.ContentType== "image/jpeg" && model.CoverImage.ContentType == "image/jpeg") || (model.ProfilPicture.ContentType == "image/png" && model.CoverImage.ContentType == "image/png"))
+                if ((model.ProfilPicture.ContentType == "image/jpeg" && model.CoverImage.ContentType == "image/jpeg") || (model.ProfilPicture.ContentType == "image/png" && model.CoverImage.ContentType == "image/png"))
                 {
                     string profilPictureFileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.ProfilPicture.FileName;
                     string profilPictureFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", profilPictureFileName);
@@ -59,6 +61,17 @@ namespace Backend_Project.Areas.Admin.Controllers
                     model.CoverImageName = coverImageFileName;
                     _context.Restaurants.Add(model);
                     _context.SaveChanges();
+
+
+                    foreach (var item in model.RestaurantToFeaturesId)
+                    {
+                        RestaurantToFeature restaurantToFeature = new RestaurantToFeature();
+                        restaurantToFeature.FeatureId = item;
+                        restaurantToFeature.RestaurantId = model.Id;
+                        _context.RestaurantToFeatures.Add(restaurantToFeature);
+                        _context.SaveChanges();
+                    }
+
                     return RedirectToAction("Index");
                 }
                 else
@@ -73,10 +86,12 @@ namespace Backend_Project.Areas.Admin.Controllers
 
         public IActionResult Update(int id)
         {
-            return View(_context.Restaurants.Include(f => f.Features)
-                .Include(r => r.Reviews)
-                .Include(m => m.Menus)
-                .FirstOrDefault(c => c.Id == id));
+            Restaurant restaurant = _context.Restaurants.FirstOrDefault(i => i.Id == id);
+            restaurant.RestaurantToFeaturesId = _context.RestaurantToFeatures.Where(fr => fr.RestaurantId == id).Select(r => r.FeatureId).ToList();
+
+
+            ViewBag.Features = _context.Features.ToList();
+            return View(_context.Restaurants.Find(id));
         }
 
         [HttpPost]
@@ -104,6 +119,24 @@ namespace Backend_Project.Areas.Admin.Controllers
 
                     _context.Restaurants.Update(model);
                     _context.SaveChanges();
+
+                    List<RestaurantToFeature> restaurantToFeatures = _context.RestaurantToFeatures.Where(fr => fr.RestaurantId == model.Id).ToList();
+
+                    foreach (var item in restaurantToFeatures)
+                    {
+                        _context.RestaurantToFeatures.Remove(item);
+                    }
+                    _context.SaveChanges();
+
+                    foreach (var item in model.RestaurantToFeaturesId)
+                    {
+                        RestaurantToFeature restaurantToFeature = new RestaurantToFeature();
+                        restaurantToFeature.FeatureId = item;
+                        restaurantToFeature.RestaurantId = model.Id;
+                        _context.RestaurantToFeatures.Add(restaurantToFeature);
+                    }
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
                 }
                 else
                 {
