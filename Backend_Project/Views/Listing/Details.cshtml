@@ -140,27 +140,30 @@
                                                 </div>
                                             </fieldset>
 
-                                            <input type="hidden" name="Restaurant" asp-for="@Model.Review.RestaurantId" value="@Model.Restaurant.Id" />
+                                            <input type="hidden" asp-for="@Model.Review.RestaurantId" value="@Model.Restaurant.Id" />
                                             <button type="submit" class="mt-4 btn btn-primary">Submit Comment</button>
                                             <div class="clearfix"></div>
                                         </form>
 
 
-                                        <div class="row mb-4 list-img-wrap">
-                                            <div class="col-md-2 list-img">
-                                                <img class="img-fluid rounded-circle shadow-lg" src="~/assets/images/thumb-1.jpg" alt="image">
+                                        @foreach (var item in Model.Restaurant.Reviews)
+                                        {
+                                            <div class="row mb-4 list-img-wrap">
+                                                <div class="col-md-2 list-img">
+                                                    <img class="img-fluid rounded-circle shadow-lg" src="~/assets/images/thumb-1.jpg" alt="image">
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <h5 class="text-primary">Charlotte Ainsley</h5>
+                                                    <p>15 Minutes Ago</p>
+                                                    <p>
+                                                        Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+                                                        recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                                    </p>
+                                                    <button class="btn btn-sm btn-primary" type="button">Helpful?</button>
+                                                </div>
                                             </div>
-                                            <div class="col-md-10">
-                                                <h5 class="text-primary">Charlotte Ainsley</h5>
-                                                <p>15 Minutes Ago</p>
-                                                <p>
-                                                    Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                                </p>
-                                                <button class="btn btn-sm btn-primary" type="button">Helpful?</button>
-                                            </div>
-                                        </div>
 
+                                        }
                                     </div>
                                 </div>
                             </div>

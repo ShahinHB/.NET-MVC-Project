@@ -36,15 +36,19 @@ namespace Backend_Project.Controllers
         }
 
         [HttpPost]
-        public IActionResult Review(Review model)
+        public IActionResult Review(VmRestaurantDetails model)
         {
+            VmRestaurantDetails vmRestaurant = new VmRestaurantDetails();
+            vmRestaurant.Restaurant =
+                           _context.Restaurants.FirstOrDefault(i => i.Id == model.Review.RestaurantId);
+
             if (ModelState.IsValid)
             {
-                model.CreatedDate = DateTime.Now;
-                _context.Reviews.Add(model);
+                model.Review.CreatedDate = DateTime.Now;
+                _context.Reviews.Add(model.Review);
                 _context.SaveChanges();
-                return RedirectToAction("Details", new { id = model.RestaurantId });
-            }
+                return RedirectToAction("Index");
+            }   
 
             return View(model);
         }
@@ -56,7 +60,6 @@ namespace Backend_Project.Controllers
             vmRestaurant.Restaurant =
                            _context.Restaurants.FirstOrDefault(i => i.Id == model.Booking.RestaurantId);
 
-            //vmRestaurant.Booking = _context.Bookings.FirstOrDefault(r => r.RestaurantId == model.Booking.RestaurantId);
 
 
             int count = _context.Bookings.Where(b => (b.RestaurantId == model.Booking.RestaurantId) && (b.BookingDate == model.Booking.BookingDate)).Count();
