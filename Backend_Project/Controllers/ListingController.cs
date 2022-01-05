@@ -4,9 +4,7 @@ using Backend_Project.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Backend_Project.Controllers
 {
@@ -45,7 +43,36 @@ namespace Backend_Project.Controllers
                 model.CreatedDate = DateTime.Now;
                 _context.Reviews.Add(model);
                 _context.SaveChanges();
-                return RedirectToAction("Details", "Listing", new { id = model.RestaurantId });
+                return RedirectToAction("Details", new { id = model.RestaurantId });
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Booking(VmRestaurantDetails model)
+        {
+            VmRestaurantDetails vmRestaurant = new VmRestaurantDetails();
+            vmRestaurant.Restaurant =
+                           _context.Restaurants.FirstOrDefault(i => i.Id == model.Booking.RestaurantId);
+
+            //vmRestaurant.Booking = _context.Bookings.FirstOrDefault(r => r.RestaurantId == model.Booking.RestaurantId);
+
+
+            int count = _context.Bookings.Where(b => (b.RestaurantId == model.Booking.RestaurantId) && (b.BookingDate == model.Booking.BookingDate)).Count();
+            if (ModelState.IsValid)
+            {
+                if (count < vmRestaurant.Restaurant.Capacity)
+                {
+
+                    _context.Bookings.Add(model.Booking);
+                    _context.SaveChanges();
+                    return RedirectToAction("Details", new { id = vmRestaurant.Restaurant.Id });
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Sorry, Restaurant is Full");
+                }
             }
 
             return View(model);

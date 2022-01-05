@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace Backend_Project.ViewModels
 {
-    public class VmRestaurantDetails
+    public class VmHome : VmLayout
     {
-        public Restaurant Restaurant { get; set; }
-
-        public Review Review { get; set; }
-
-        public Booking Booking { get; set; }
-
+        public List<Blog> Blogs { get; set; }
+        public List<Restaurant> Restaurants { get; set; }
     }
 }

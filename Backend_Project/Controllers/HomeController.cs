@@ -1,4 +1,6 @@
-﻿using Backend_Project.Models;
+﻿using Backend_Project.Data;
+using Backend_Project.Models;
+using Backend_Project.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,16 +13,20 @@ namespace Backend_Project.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly AppDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(AppDbContext context)
         {
-            _logger = logger;
-        }
 
+            _context = context;
+        }
+      
         public IActionResult Index()
         {
-            return View();
+            VmHome model = new VmHome();
+            model.Blogs = _context.Blogs.OrderByDescending(b => b.CreatedDate).Take(3).ToList();
+            model.Restaurants = _context.Restaurants.ToList();
+            return View(model);
         }
 
         public IActionResult Privacy()
